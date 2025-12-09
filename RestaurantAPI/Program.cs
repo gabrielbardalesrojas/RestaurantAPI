@@ -95,14 +95,19 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // CORS
+// 🚀 CORS Final para Producción (solo tu GitHub Pages)
+var MyGitHubPagesPolicy = "AllowGitHubPages"; 
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
+    options.AddPolicy(name: MyGitHubPagesPolicy, 
+                      policy =>
+                      {
+                          // URL Específica de tu Front-end:
+                          policy.WithOrigins("https://gabrielbardalesrojas.github.io") 
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
 });
 
 var app = builder.Build();
