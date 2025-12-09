@@ -139,8 +139,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll");
 
+app.UseCors(MyGitHubPagesPolicy);
 app.UseAuthentication();
 app.UseAuthorization();
 
